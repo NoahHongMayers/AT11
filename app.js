@@ -23,8 +23,31 @@ client.on('connect', function () {
 });
 
 client.on('message', function (topic, message) {
-    console.log(topic.toString());
-    console.log(message.toString());
+
+    var splitTopic = topic.toString().split('/');
+
+    if (splitTopic[0] == "MODULE") {
+
+        var number = parseInt(splitTopic[1]);
+
+        if (number >= 1 && number <= 6) {
+
+            if (message.toString() == "on") {
+                modules[number - 1] = true;
+            }
+            else if (message.toString() == "off") {
+                modules[number - 1] = false;
+            }
+            else {
+                console.log("Unknown Message");
+            }
+        }
+        else {
+            console.log("Unknown Module Number");
+        }
+
+        console.log(modules);
+    }
 });
 
 //=========================================================
