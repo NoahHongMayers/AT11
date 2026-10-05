@@ -7,17 +7,29 @@
 */
 var express = require("express")
 var app = express()
-var mqtt = require('mqtt'); 
-var client  = mqtt.connect('mqtt://127.0.0.1:1883');
-
 app.set('view engine', 'ejs');
 
-var modules = [false, false, false, false, false, false];
 
+//=====================[ MQTT ]==========================
 
-client.on('connect', function () { 
-console.log("MQTT Connected"); 
+var mqtt = require('mqtt');
+var client = mqtt.connect('mqtt://127.0.0.1:1883');
+client.subscribe('MODULE/#');
+
+client.publish('MODULE', 'Server Says Hello');
+
+client.on('connect', function () {
+    console.log("MQTT Connected");
 });
+
+client.on('message', function (topic, message) {
+    console.log(topic.toString());
+    console.log(message.toString());
+});
+
+//=========================================================
+
+var modules = [false, false, false, false, false, false];
 
 app.get("/", function (req, res) {
     res.render("pages/index")
