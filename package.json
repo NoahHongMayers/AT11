@@ -1,0 +1,23 @@
+{
+  "name": "lab3",
+  "version": "1.0.0",
+  "description": "lab 3",
+  "homepage": "https://github.com/NoahHongMayers/LAB3#readme",
+  "bugs": {
+    "url": "https://github.com/NoahHongMayers/LAB3/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/NoahHongMayers/LAB3.git"
+  },
+  "license": "ISC",
+  "author": "Noah Hong Mayers",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "ejs": "^6.0.1"
+  }
+}
